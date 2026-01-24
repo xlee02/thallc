@@ -1,4 +1,35 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body {
+    padding: 0;
+    margin: 0;
+}
 #nav {
-    background-color: coral;
-    color: aqua;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    border: 5px;
+    border-color: black;
+    border-style: outset;
+}
+#nav a {
+    text-decoration: none;
+    color: black;
+}
+#nav a:hover {
+    color: rgb(255, 102, 0);
+}
+#nav h1 {
+    margin: 5px;
+}
+#nav ul {
+    display: flex;
+}
+#nav li {
+    margin-left: 10px;
+    list-style: none;
 }
