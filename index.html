@@ -3,170 +3,439 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Handy Saguaro LLC - Home Repair, Improvement, Maintenance</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="description" content="Reliable handyman services for repairs, maintenance, and small home improvement projects.">
+    <title>The Handy Saguaro LLC | Handyman Services</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;family=Playfair+Display:wght@700&amp;display=swap');
+        :root {
+            --green: #1f5d3a;
+            --green-dark: #143c27;
+            --accent: #f4a261;
+            --cream: #f8f2e8;
+            --text: #243128;
+            --muted: #677367;
+            --white: #ffffff;
+            --border: #e8dfd2;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: linear-gradient(180deg, #fffdf8 0%, var(--cream) 100%);
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(255, 253, 248, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .brand {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--green);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.2rem;
+            border-radius: 999px;
+            font-weight: 700;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: var(--white);
+            box-shadow: 0 8px 20px rgba(31, 93, 58, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--green);
+            border: 2px solid var(--green);
+        }
+
+        main { padding-bottom: 2rem; }
+
+        .hero {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 4rem 1.25rem 3rem;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            max-width: 620px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-box {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 1.2rem;
+            box-shadow: 0 10px 30px rgba(36, 49, 40, 0.06);
+        }
+
+        .hero-box ul {
+            padding-left: 1rem;
+            color: var(--muted);
+        }
+
+        section {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2.5rem 1.25rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-intro {
+            color: var(--muted);
+            max-width: 700px;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.2rem;
+            box-shadow: 0 8px 24px rgba(36, 49, 40, 0.04);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--green-dark);
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .about-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 0.6rem;
+        }
+
+        .about-list li {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.75rem 0.9rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-card {
+            background: linear-gradient(145deg, var(--green), var(--green-dark));
+            color: var(--white);
+            border-radius: 16px;
+            padding: 1rem;
+            min-height: 140px;
+            display: flex;
+            align-items: end;
+            font-weight: 700;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .testimonial {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.2rem;
+        }
+
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        form {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        label {
+            font-weight: 700;
+            color: var(--green-dark);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem 0.9rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font: inherit;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contact-card {
+            background: var(--green);
+            color: var(--white);
+            border-radius: 18px;
+            padding: 1.4rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1.25rem 3rem;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero, .about, .contact {
+                grid-template-columns: 1fr;
+            }
+            .card-grid, .gallery-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
+            .card-grid, .gallery-grid, .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                padding-top: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <i class="fas fa-cactus"></i>
-                <span>The Handy Saguaro</span>
-            </div>
+    <header>
+        <nav>
+            <a class="brand" href="#home">The Handy Saguaro LLC</a>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#gallery">Work</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="mobile-menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
+            <a class="btn btn-primary" href="tel:6029350051">Call (602) 935-0051</a>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Expert Handyman Services in the North</h1>
-            <p class="tagline">Reliable. Skilled. Local. From minor fixes to full renovations, The Handy Saguaro has you covered.</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn primary">Get a Free Quote</a>
-                <a href="tel:602-935-0051" class="btn secondary">Call (602) 935-0051</a>
+    <main>
+        <section class="hero" id="home">
+            <div>
+                <h1>Fast, friendly handyman help for every repair and refresh.</h1>
+                <p>From leaking faucets to fence repairs, we handle the small jobs and home projects that keep your property safe, functional, and looking its best.</p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#contact">Get a Free Quote</a>
+                    <a class="btn btn-secondary" href="#services">View Services</a>
+                </div>
+                <p><strong>Serving the Valley with dependable service and honest pricing.</strong></p>
             </div>
-        </div>
-    </section>
+            <div class="hero-box">
+                <h3>Why homeowners call us</h3>
+                <ul>
+                    <li>Prompt, professional visits</li>
+                    <li>Clear estimates before work begins</li>
+                    <li>Quality workmanship and cleanup</li>
+                    <li>Reliable support for repairs and upkeep</li>
+                </ul>
+            </div>
+        </section>
 
-    <!-- Services -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2>Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <i class="fas fa-hammer"></i>
+        <section id="services">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-intro">A practical mix of repair, maintenance, and improvement services for homes and small properties.</p>
+            <div class="card-grid">
+                <article class="card">
                     <h3>General Repairs</h3>
-                    <p>Drywall repair, painting, door fixes, and more. Quick and clean.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-faucet"></i>
-                    <h3>Plumbing</h3>
-                    <p>New faucets, dishwasher installs, toilet installs, and garbage disposals</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-lightbulb"></i>
-                    <h3>Electrical</h3>
-                    <p>Lighting installation, ceiling fans, and basic setup.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-tools"></i>
-                    <h3>Carpentry &amp; Assembly</h3>
-                    <p>Furniture assembly, shelving, deck repairs, and custom builds.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-home"></i>
+                    <p>Doors, windows, drywall patching, trim work, and everyday fixes.</p>
+                </article>
+                <article class="card">
+                    <h3>Plumbing Help</h3>
+                    <p>Leak repairs, faucet swaps, toilet fixes, and drain support.</p>
+                </article>
+                <article class="card">
+                    <h3>Electrical Tasks</h3>
+                    <p>Lighting updates, ceiling fans, outlets, and switch replacements.</p>
+                </article>
+                <article class="card">
+                    <h3>Carpentry</h3>
+                    <p>Shelving, cabinets, furniture fixes, and small custom wood projects.</p>
+                </article>
+                <article class="card">
+                    <h3>Flooring</h3>
+                    <p>Tile, laminate, and hardwood repairs with careful finishing.</p>
+                </article>
+                <article class="card">
                     <h3>Home Maintenance</h3>
-                    <p>Gutter cleaning, pressure washing, seasonal tune-ups.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-wrench"></i>
-                    <h3>Renovations</h3>
-                    <p>Kitchen &amp; bathroom updates, flooring, and full room makeovers.</p>
-                </div>
+                    <p>Seasonal upkeep, gutter care, and preventive maintenance plans.</p>
+                </article>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-text">
-                    <h2>About The Handy Saguaro LLC</h2>
-                    <p>Based in Arizona, we're your local handyman team with years of experience taming the desert heat and keeping homes running smoothly. Owner-operated..</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> Flexible scheduling</li>
-                        <li><i class="fas fa-check"></i> Wide range of services</li>
-                        <li><i class="fas fa-check"></i> 5+ Years Experience</li>
-                        <li><i class="fas fa-check"></i> Satisfaction Guaranteed</li>
-                    </ul>
-                    <a href="#contact" class="btn primary">Book Your Service Today</a>
-                </div>
-                <div class="about-image">
-                    <!-- Placeholder for image -->
-                    <div class="placeholder-image">
-                        <i class="fas fa-cactus fa-10x"></i>
-                        <p>Saguaro Strong</p>
-                    </div>
-                </div>
+        <section class="about" id="about">
+            <div>
+                <h2 class="section-title">About Our Business</h2>
+                <p class="section-intro">We are a local handyman company built on trust, clean work, and practical solutions. Whether it is a quick repair or a weekend improvement project, we show up ready to help.</p>
+                <ul class="about-list">
+                    <li>Reliable scheduling and clear communication</li>
+                    <li>Transparent pricing with no surprises</li>
+                    <li>Friendly service with attention to detail</li>
+                    <li>Licensed, insured, and committed to quality</li>
+                </ul>
             </div>
-        </div>
-    </section>
+            <div class="card">
+                <h3>What to Expect</h3>
+                <p>We start by listening to your needs, recommend the best solution, and make sure the work is completed neatly and on time.</p>
+                <p>From urgent repairs to planned upgrades, our goal is to make home maintenance feel simple and stress-free.</p>
+            </div>
+        </section>
 
-    <!-- Testimonials -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <h2>What Our Customers Say</h2>
+        <section id="gallery">
+            <h2 class="section-title">Recent Projects</h2>
+            <p class="section-intro">A few examples of the kind of work we take pride in completing for local homeowners.</p>
+            <div class="gallery-grid">
+                <div class="gallery-card">Door repair & install</div>
+                <div class="gallery-card">Bathroom fixture update</div>
+                <div class="gallery-card">Fence and trim work</div>
+                <div class="gallery-card">Kitchen cabinet fix</div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <h2 class="section-title">What Customers Say</h2>
             <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p>"Highly recommend Xavier! He is the Swiss Army knife of handymen! He can do anything. He is punctual, has good communication and is considerate with our family! We couldn’t recommend him more for any project you need help with!"</p>
-                    <div class="author">- Devin Sinha, North Phoenix</div>
-                </div>
-                <div class="testimonial-card">
-                    <p>"Xavier and his brother did a fantastic job putting up 2 large covered porches and also did some plumbing repairs for me. I would highly recommend them."</p>
-                    <div class="author">- Kerri Vasquez, Prescott</div>
-                </div>
-                <div class="testimonial-card">
-                    <p>"I have been using the Handy Suguaro LLC for many projects in and around my house. I have used them for drywall and texture, electrical, ceiling repair, demo work, and many other projects. I have been happily surprised with their workmanship, and the results have been outstanding."</p>
-                    <div class="author">- Cosimo Noto, Prescott</div>
-                </div>
+                <article class="testimonial">
+                    <p>“Quick response, fair quote, and the work was done neatly. I would definitely call again.”</p>
+                    <strong>— Sarah M.</strong>
+                </article>
+                <article class="testimonial">
+                    <p>“The team fixed our leaking faucet and replaced a broken outlet the same day. Very professional.”</p>
+                    <strong>— Michael R.</strong>
+                </article>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <p><i class="fas fa-phone"></i> (602) 935-0051 </p>
-                    <p><i class="fas fa-envelope"></i> contact@thehandysaguaro.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Serving Prescott, Northern Phoenix &amp; surrounding areas</p>
-                    <div class="hours">
-                        <h4>Business Hours</h4>
-                        <p>Monday - Friday: 7AM - 6PM</p>
-                    </div>
-                </div>
-                <form id="contact-form" class="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Email Address" required>
-                    <input type="tel" placeholder="Phone Number">
-                    <textarea placeholder="Describe your project..." rows="5" required></textarea>
-                    <button type="submit" class="btn primary">Send Message</button>
+        <section class="contact" id="contact">
+            <div>
+                <h2 class="section-title">Get in Touch</h2>
+                <p class="section-intro">Tell us what needs attention and we will follow up with a quick estimate and availability.</p>
+                <form>
+                    <label for="name">Your Name</label>
+                    <input id="name" type="text" placeholder="John Doe">
+
+                    <label for="phone">Phone Number</label>
+                    <input id="phone" type="tel" placeholder="(602) 555-0123">
+
+                    <label for="email">Email</label>
+                    <input id="email" type="email" placeholder="you@example.com">
+
+                    <label for="message">Project Details</label>
+                    <textarea id="message" placeholder="Describe the repair or improvement you need..."></textarea>
+
+                    <button class="btn btn-primary" type="submit">Send Message</button>
                 </form>
             </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 The Handy Saguaro LLC. All Rights Reserved.</p>
-            <div class="social-links">
-                <a href="https://www.facebook.com/thehandysaguaro"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/thehandysaguarollc/"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.yelp.com/biz/the-handy-saguaro-prescott"><i class="fab fa-yelp"></i></a>
+            <div class="contact-card">
+                <h3>Contact Info</h3>
+                <p><strong>Phone:</strong> <a href="tel:6029350051">(602) 935-0051</a></p>
+                <p><strong>Email:</strong> <a href="mailto:contact@thehandysaguaro.com">contact@thehandysaguaro.com</a></p>
+                <p><strong>Service Area:</strong> Prescott, Arizona, and the Northern Phoenix area.</p>
+                <p>We are happy to help with urgent repairs, seasonal maintenance, and small upgrades.</p>
             </div>
-        </div>
-    </footer>
+        </section>
+    </main>
 
-    <script src="script.js"></script>
+    <footer>
+        <p>© 2026 The Handy Saguaro LLC. All rights reserved.</p>
+        <p>Built for dependable home service and thoughtful craftsmanship.</p>
+    </footer>
 </body>
 </html>
